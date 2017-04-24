@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Matheus Webler",
+      "authorEmail": "matheus.webler@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
