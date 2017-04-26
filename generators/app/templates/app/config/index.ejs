@@ -1,0 +1,18 @@
+<% if (server) { -%>
+const server = require('./server');
+<% } -%>
+
+<% if (database) { -%>
+const database = require('./database');
+<% } -%>
+
+module.exports = {
+    <% if (server) { -%>
+    server: server
+    <% if (database) { -%>,<% } -%>
+    <% } -%>
+
+    <% if (database) { -%>
+    database: database
+    <% } -%>
+}

@@ -1,0 +1,9 @@
+<%  if (server.routes){ -%>
+<% server.routes.forEach(function(route){ -%>
+const <%=route.name%> = require('./<%=route.name%>');
+<% }); } -%>
+
+<% var export_list = "";
+server.routes.forEach(function(route){export_list += route.name + ','});
+export_list = export_list.slice(0, -1); -%>
+module.exports = [].concat(<%=export_list-%>);

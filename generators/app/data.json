@@ -1,0 +1,43 @@
+{
+    server:{
+        port: 3000,
+        host: "localhost",
+        routes: [
+            {
+                name: "musics",
+                urls: [
+                    {
+                        name: "get",
+                        path: "/hello/{id}",
+                        method: "GET",
+                        calls: [
+                        ]
+                    },
+                    {
+                        name: "getAll",
+                        path: "/hello",
+                        method: "GET"
+                    },
+                                      {
+                        name: "post",
+                        path: "/hello",
+                        method: "POST"
+                    }
+                ],
+                models: [
+                    {
+                        name: "music",
+                        entity: "Music",
+                        schema: {title: { type: String },
+  artist: { type: String },
+  album: { type: String }}
+                    }
+                ]
+
+            }
+        ]
+    },
+    "database": {
+        "name": "mydb"
+    }
+}

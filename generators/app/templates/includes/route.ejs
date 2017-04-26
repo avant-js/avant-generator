@@ -1,0 +1,17 @@
+<% route.models.forEach(function(model){ %>
+const <%= model.entity %> = require('../models/<%=model.name%>');
+<% }); %>
+
+let paths = [];
+<% route.urls.forEach(function(url){ -%>
+const <%= url.name %> = {
+    method: '<%= url.method %>',
+    path: '<%= url.path %>'
+};
+<%= url.name %>.handler = (req, reply) => {
+    reply();
+};
+paths.push(<%= url.name %>);
+<% }); -%>
+
+module.exports = paths;

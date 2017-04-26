@@ -1,0 +1,7 @@
+const mongoose = require('mongoose');
+
+const <%= model.name %>Schema = mongoose.Schema(
+  <%- JSON.stringify(model.schema).replace(/\"/g, "") -%>
+);
+
+module.exports = mongoose.model( '<%= model.entity %>', <%= model.name %>Schema);

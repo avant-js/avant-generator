@@ -1,0 +1,35 @@
+{
+  "name": "hapi-api-example",
+  "version": "1.0.0",
+  "description": "An example API with Hapi and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --use_strict index.js",
+    "test": "mocha --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avant-js/hapi-api-example.git"
+  },
+  "keywords": [
+    "node",
+    "rest",
+    "api",
+    "hapi",
+    "mongodb"
+  ],
+  "author": "Matheus Webler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avant-js/hapi-api-example/issues"
+  },
+  "homepage": "https://github.com/avant-js/hapi-api-example#readme",
+  "dependencies": {
+    "hapi": "^16.1.1",
+    "mongoose": "^4.9.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
