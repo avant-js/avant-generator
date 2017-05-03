@@ -67,12 +67,11 @@ module.exports = class extends Generator {
         }, this);
     }
 
-    installingHapi() {
-        this.npmInstall(['hapi'], { 'save': true });
-    }
-
-    installingMongoose() {
-        this.npmInstall(['mongoose'], { 'save': true });
+    installingDependencies() {
+        if(obj.server)
+            this.npmInstall(['hapi'], { 'save': true });
+        if(obj.database)
+            this.npmInstall(['mongoose'], { 'save': true });
     }
 
     install() {
@@ -94,6 +93,10 @@ var obj = {
                         path: "/hello/{id}",
                         method: "GET",
                         calls: [
+                            {
+                                type: "promise",
+                                parameters: [ "req.params.id" ]
+                            }
                         ]
                     },
                     {
