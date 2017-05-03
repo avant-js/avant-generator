@@ -1,6 +1,17 @@
-<% route.models.forEach(function(model){ %>
-const <%= model.entity %> = require('../models/<%=model.name%>');
-<% }); %>
+<% route.imports.forEach(function(imp){ -%>
+<% if (imp.type === "model" ){ -%>
+const <%= imp.entity %> = require('../models/<%=imp.name%>');
+<% } -%>
+<% }); -%>
+
+<% route.declarations.forEach(function(declaration){ -%>
+<% if (declaration.type === "function" ){ -%>
+function <%= declaration.name %>(<%= declaration.parameters.join(', ') %>){
+    <%- declaration.code %>
+}
+<% } -%>
+<% }); -%>
+
 
 let paths = [];
 <% route.urls.forEach(function(url){ -%>
@@ -9,7 +20,15 @@ const <%= url.name %> = {
     path: '<%= url.path %>'
 };
 <%= url.name %>.handler = (req, reply) => {
+    <% if(url.calls) { -%>
+    var result = Promise.resolve(<%= url.calls[0].code %>( <%= url.calls[0].parameters.join(', ') %> ))
+    <% for(let i = 1; i < url.calls.length; i++){ let call = url.calls[i]; -%>
+    .then( ( <%= call.inputs.join(', ') %> ) => { return <%= call.code %>( <%= call.parameters.join(', ') %> ); });
+    <% } -%>
+    reply(result);
+    <% } else { -%>
     reply();
+    <% } -%>
 };
 paths.push(<%= url.name %>);
 <% }); -%>

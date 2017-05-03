@@ -90,30 +90,53 @@ var obj = {
                 urls: [
                     {
                         name: "get",
-                        path: "/hello/{id}",
+                        path: "/musics/{id}",
                         method: "GET",
                         calls: [
                             {
-                                type: "promise",
+                                code: "Music.findById",
+                                type: "model",
                                 parameters: [ "req.params.id" ]
+                            },
+                            {
+                                inputs: [ "m", "err" ],
+                                code: "changeModel",
+                                type: "function",
+                                parameters: [ "m" ]
                             }
                         ]
                     },
                     {
                         name: "getAll",
-                        path: "/hello",
-                        method: "GET"
+                        path: "/musics",
+                        method: "GET",
+                        calls: [
+                            {
+                                code: "Music.find",
+                                type: "model",
+                                parameters: [ ]
+                            }
+                        ]
                     },
                     {
                         name: "post",
-                        path: "/hello",
+                        path: "/musics",
                         method: "POST"
                     }
                 ],
-                models: [
+                imports: [
                     {
+                        type: "model",
                         name: "music",
                         entity: "Music"
+                    }
+                ],
+                declarations: [
+                    {
+                        type: "function",
+                        name: "changeModel",
+                        parameters: [ "music" ],
+                        code: "music.title = 'musicedited'; return Promise.resolve(music);"
                     }
                 ]
 
