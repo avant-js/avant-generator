@@ -6,7 +6,7 @@ const <%= imp.entity %> = require('../models/<%=imp.name%>');
 
 <% route.declarations.forEach(function(declaration){ -%>
 <% if (declaration.type === "function" ){ -%>
-function <%= declaration.name %>(<%= declaration.parameters.join(', ') %>){
+function <%= declaration.name %>(<%= declaration.input %>){
     <%- declaration.code %>
 }
 <% } -%>
@@ -21,9 +21,9 @@ const <%= url.name %> = {
 };
 <%= url.name %>.handler = (req, reply) => {
     <% if(url.calls) { -%>
-    var result = Promise.resolve(<%= url.calls[0].code %>( <%= url.calls[0].parameters.join(', ') %> ))
+    var result = Promise.resolve(<%= url.calls[0].code %>( <%= url.calls[0].input %> ))
     <% for(let i = 1; i < url.calls.length; i++){ let call = url.calls[i]; -%>
-    .then( ( <%= call.inputs.join(', ') %> ) => { return <%= call.code %>( <%= call.parameters.join(', ') %> ); });
+    .then( ( <%= call.input %> ) => { return <%= call.code %>( <%= call.input %> ); });
     <% } -%>
     reply(result);
     <% } else { -%>

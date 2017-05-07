@@ -6,27 +6,7 @@ const rename = require('gulp-rename');
 const beautify = require('gulp-beautify');
 
 module.exports = class extends Generator {
-    prompting() {
-        // Have Yeoman greet the user.
-        this.log(yosay(
-            'Welcome to the exquisite ' + chalk.red('generator-avantjs') + ' generator!'
-        ));
-
-        const prompts = [{
-            type: 'confirm',
-            name: 'someAnswer',
-            message: 'Would you like to enable this option?',
-            default: true
-        }];
-
-        return this.prompt(prompts).then(props => {
-            // To access props later use this.props.someAnswer;
-            this.props = props;
-        });
-    }
-
     writing() {
-
         this.registerTransformStream(rename(path => {
             if (path.extname == '.ejs')
                 path.extname = '.js';
@@ -34,43 +14,31 @@ module.exports = class extends Generator {
         this.registerTransformStream(beautify({ indent_size: 2 }));
         this.fs.copyTpl(
             this.templatePath('./app/**/*'),
-            this.destinationPath(),
-            {
-                server: {
-                    port: 3000,
-                    host: 'localhost',
-                    routes: [
-                        {
-                            name: 'musics'
-                        }
-                    ]
-                },
-                database: {
-                    name: 'mydb'
-                }
-            }
-
+            this.destinationPath('./generatedcode'),
+            this._initOptions.app
         );
 
-        obj.server.routes.forEach(function (route) {
+        this._initOptions.app.server.routes.forEach(function (route) {
             this.fs.copyTpl(
                 this.templatePath('./includes/route.ejs'),
-                this.destinationPath(`./routes/${route.name}.js`),
+                this.destinationPath(`./generatedcode/routes/${route.name}.js`),
                 { route: route });
         }, this);
 
-        obj.database.models.forEach(function (model) {
-            this.fs.copyTpl(
-                this.templatePath('./includes/model.ejs'),
-                this.destinationPath(`./models/${model.name}.js`),
-                { model: model });
-        }, this);
+        if(this._initOptions.app.database){
+            this._initOptions.app.database.models.forEach(function (model) {
+                this.fs.copyTpl(
+                    this.templatePath('./includes/model.ejs'),
+                    this.destinationPath(`./generatedcode/models/${model.name}.js`),
+                    { model: model });
+            }, this);
+        }
     }
 
     installingDependencies() {
-        if(obj.server)
+        if(this._initOptions.app.server)
             this.npmInstall(['hapi'], { 'save': true });
-        if(obj.database)
+        if(this._initOptions.app.database)
             this.npmInstall(['mongoose'], { 'save': true });
     }
 
@@ -99,7 +67,7 @@ var obj = {
                                 parameters: [ "req.params.id" ]
                             },
                             {
-                                inputs: [ "m", "err" ],
+                                inputs: [ "m" ],
                                 code: "changeModel",
                                 type: "function",
                                 parameters: [ "m" ]
