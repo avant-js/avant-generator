@@ -22,7 +22,7 @@ module.exports = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath('./includes/route.ejs'),
                 this.destinationPath(`./generatedcode/routes/${route.name}.js`),
-                { route: route });
+                { route: route, util: require('util') });
         }, this);
 
         if(this._initOptions.app.database){
