@@ -12,7 +12,6 @@ function <%= declaration.name %>(<%= declaration.input %>){
 <% } -%>
 <% }); -%>
 
-
 let paths = [];
 <% route.urls.forEach(function(url){ -%>
 const <%= url.name %> = {
@@ -31,6 +30,6 @@ const <%= url.name %> = {
     <% } -%>
 };
 paths.push(<%= url.name %>);
-<% }); -%>
 
+<% }); -%>
 module.exports = paths;
