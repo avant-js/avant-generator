@@ -17,17 +17,6 @@ let paths = [];
 const <%= url.name %> = {
     method: '<%= url.method %>',
     path: '<%= url.path %>'
-    <% if(url.docs) { var resp = util.inspect(url.docs.responses, {showHidden: false, depth: null}); -%>
-    , config: {
-        tags: ['api'],
-        description: '<%= url.docs.description %>',
-        plugins: {
-            'hapi-swaggered': {
-                responses: <%- url.docs.responses %>
-            }
-        }
-    }
-    <% } -%>
 };
 <%= url.name %>.handler = (req, reply) => {
     <% if(url.calls) { -%>

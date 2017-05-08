@@ -21,6 +21,24 @@ server.connection({ port: config.server.port, host: config.server.host, router:{
 // Import routes
 server.route(routes);
 
+<% if (server.swagger) { -%>
+server.register(require('inert'), (err) => {
+    if (err) {
+        throw err;
+    }
+
+    server.route({
+        method: 'GET',
+        path: '/docs/{param*}',
+        handler: {
+            directory: {
+                path: 'public/docs'
+            }
+        }
+    });
+});
+<% } -%>
+
 // Start Hapi server if not being imported
 if (!module.parent) {
     server.start((err) => {
