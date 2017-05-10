@@ -20,7 +20,7 @@ const <%= url.name %> = {
 };
 <%= url.name %>.handler = (req, reply) => {
     <% if(url.calls) { -%>
-    var result = Promise.resolve(<%= url.calls[0].code %>( <%= url.calls[0].input %> ))
+    var result = <%= url.calls[0].code %>( <%= url.calls[0].input %> )
     <% for(let i = 1; i < url.calls.length; i++){ let call = url.calls[i]; -%>
     .then( ( <%= call.input %> ) => { return <%= call.code %>( <%= call.input %> ); });
     <% } -%>

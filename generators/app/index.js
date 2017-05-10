@@ -5,6 +5,7 @@ const yosay = require('yosay');
 const rename = require('gulp-rename');
 const beautify = require('gulp-beautify');
 const filter = require('gulp-filter');
+var clip = require('gulp-clip-empty-files');
 
 module.exports = class extends Generator {
     writing() {
@@ -20,6 +21,8 @@ module.exports = class extends Generator {
             beautify({ indent_size: 2 }),
             ejsFilter.restore
         ]);
+
+        this.registerTransformStream(clip());
 
         this.fs.copyTpl(
             this.templatePath('./app/**/*'),
