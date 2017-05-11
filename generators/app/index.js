@@ -7,7 +7,7 @@ const beautifyOptions = {indent_size: 2};
 
 module.exports = class extends Generator {
   writing() {
-    console.log(this);
+
     this.registerTransformStream(rename(path => {
       if (path.extname === '.ejs') {
         path.extname = '.js';
