@@ -22,8 +22,6 @@ module.exports = class extends Generator {
             ejsFilter.restore
         ]);
 
-        this.registerTransformStream(clip());
-
         this.fs.copyTpl(
             this.templatePath('./app/**/*'),
             this.destinationPath('./generatedcode'),
