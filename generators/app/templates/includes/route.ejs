@@ -19,7 +19,7 @@ const <%= url.name %> = {
     path: '<%= url.path %>'
 };
 <%= url.name %>.handler = (req, reply) => {
-    <% if(url.calls) { -%>
+    <% if(url.calls && url.calls.length > 0) { -%>
     var result = <%= url.calls[0].code %>( <%= url.calls[0].input %> )
     <% for(let i = 1; i < url.calls.length; i++){ let call = url.calls[i]; -%>
     .then( ( <%= call.input %> ) => { return <%= call.code %>( <%= call.input %> ); });
