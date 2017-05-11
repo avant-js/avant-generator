@@ -48,6 +48,9 @@
     "env": {
       "jest": true,
       "node": true
+    },
+    "rules": {
+        "camelcase": [2, {"properties": "never"}]
     }
   },
   "repository": "https://github.com/avant-js/generator-avantjs.git",
