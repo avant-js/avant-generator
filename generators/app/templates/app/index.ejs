@@ -6,6 +6,7 @@ const routes = require('./routes');
 <% if (database) { -%>
 const mongoose = require('mongoose');
 <% } -%>
+const winston = require('winston');
 
 <% if (database) { -%>
 // Initialize mongo db connection
@@ -43,7 +44,7 @@ server.register(require('inert'), (err) => {
 if (!module.parent) {
     server.start((err) => {
         if (err) throw err;
-        console.log(`Server running at: ${server.info.uri}`);
+        winston.log(`Server running at: ${server.info.uri}`);
     });
 }
 
