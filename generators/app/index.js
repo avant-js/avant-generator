@@ -55,6 +55,12 @@ module.exports = class extends Generator {
                 this.destinationPath('./generatedcode/public/docs/swagger.json'),
                 { swagger: this._initOptions.app.server.swagger });
         }
+
+        this.fs.copyTpl(
+            this.templatePath('./app/.eslint*'),
+            this.destinationPath('./generatedcode'),
+            this._initOptions.app
+        );
     }
 
     installingDependencies() {
