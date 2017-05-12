@@ -63,19 +63,6 @@ module.exports = class extends Generator {
         );
     }
 
-    installingDependencies() {
-        if (this._initOptions.app.server) {
-            this.npmInstall(['hapi'], { save: true });
-        }
-        if (this._initOptions.app.database) {
-            this.npmInstall(['mongoose'], { save: true });
-        }
-        this.npmInstall(['winston'], { save: true });
-        this.npmInstall(['eslint'], { 'save-dev': true });
-        this.npmInstall(['mocha'], { 'save-dev': true });
-        this.npmInstall(['chai'], { 'save-dev': true });
-    }
-
     install() {
         this.installDependencies({
             npm: true,
