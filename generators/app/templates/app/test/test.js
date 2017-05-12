@@ -11,6 +11,7 @@ describe('My avantjs test case', () => {
     describe('My test', () => {
         it('it expects something', (done) => {
             //Run yout tests here
+            done();
         });
     });
 });
