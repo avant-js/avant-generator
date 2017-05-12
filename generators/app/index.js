@@ -60,9 +60,6 @@ module.exports = class extends Generator {
   installingDependencies() {
     if (this._initOptions.app.server) {
       this.npmInstall(['hapi'], {save: true});
-      if (this._initOptions.app.server.swagger) {
-        this.npmInstall(['inert'], {save: true});
-      }
     }
     if (this._initOptions.app.database) {
       this.npmInstall(['mongoose'], {save: true});
