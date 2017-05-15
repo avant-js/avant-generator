@@ -56,16 +56,14 @@ module.exports = class extends Generator {
                 { swagger: this._initOptions.app.server.swagger });
         }
 
-        this.fs.copyTpl(
+        this.fs.copy(
             this.templatePath('./app/.eslint*'),
-            this.destinationPath('./generatedcode'),
-            this._initOptions.app
+            this.destinationPath('./generatedcode')
         );
 
-        this.fs.copyTpl(
+        this.fs.copy(
             this.templatePath('./app/.travis.yml'),
-            this.destinationPath('./generatedcode'),
-            this._initOptions.app
+            this.destinationPath('./generatedcode/.travis.yml')
         );
     }
 
