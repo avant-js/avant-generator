@@ -44,7 +44,7 @@ server.register(require('inert'), (err) => {
 if (!module.parent) {
     server.start((err) => {
         if (err) throw err;
-        winston.log(`Server running at: ${server.info.uri}`);
+        winston.info(`Server running at: ${server.info.uri}`);
     });
 }
 
