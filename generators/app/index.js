@@ -61,6 +61,12 @@ module.exports = class extends Generator {
             this.destinationPath('./generatedcode'),
             this._initOptions.app
         );
+
+        this.fs.copyTpl(
+            this.templatePath('./app/.travis.yml'),
+            this.destinationPath('./generatedcode'),
+            this._initOptions.app
+        );
     }
 
     install() {
