@@ -1,8 +1,8 @@
 {
   "name": "generator-avantjs",
   "version": "0.0.3",
-  "description": "",
-  "homepage": "",
+  "description": "A Yeoman generator for AvantJS project",
+  "homepage": "https://github.com/avant-js",
   "author": {
     "name": "Matheus Webler",
     "email": "matheus.webler@gmail.com",
