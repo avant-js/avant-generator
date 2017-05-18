@@ -68,7 +68,7 @@ module.exports = class extends Generator {
 
         this.fs.copy(
             this.templatePath('./app/.gitignore'),
-            this.destinationPath('./generatedcode/.travis.yml')
+            this.destinationPath('./generatedcode/.gitignore')
         );
     }
 

@@ -13,8 +13,10 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "",
-    "yeoman-generator"
+    "avant-js",
+    "yeoman-generator",
+    "hapi",
+    "mongo"
   ],
   "devDependencies": {
     "yeoman-test": "^1.6.0",
