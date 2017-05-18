@@ -6,7 +6,11 @@
   "author": {
     "name": "Matheus Webler",
     "email": "matheus.webler@gmail.com",
-    "url": ""
+    "url": "https://github.com/avant-js/generator-avantjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avant-js/generator-avantjs.git"
   },
   "files": [
     "generators"
@@ -55,6 +59,5 @@
         "camelcase": [2, {"properties": "never"}]
     }
   },
-  "repository": "https://github.com/avant-js/generator-avantjs.git",
   "license": "Apache-2.0"
 }
