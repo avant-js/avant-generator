@@ -1,6 +1,6 @@
 {
   "name": "generator-avantjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Yeoman generator for AvantJS project",
   "homepage": "https://github.com/avant-js",
   "author": {
@@ -56,7 +56,12 @@
       "node": true
     },
     "rules": {
-        "camelcase": [2, {"properties": "never"}]
+      "camelcase": [
+        2,
+        {
+          "properties": "never"
+        }
+      ]
     }
   },
   "license": "Apache-2.0"
