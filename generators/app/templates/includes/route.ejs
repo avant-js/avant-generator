@@ -13,7 +13,9 @@ function <%= declaration.name %>(<%= declaration.input %>){
 <% }); -%>
 
 let paths = [];
+
 <% route.urls.forEach(function(url){ -%>
+/* Route <%= url.method %> <%= url.path %> */
 const <%= url.name %> = {
     method: '<%= url.method %>',
     path: '<%= url.path %>'
