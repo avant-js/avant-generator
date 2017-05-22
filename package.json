@@ -1,6 +1,6 @@
 {
   "name": "generator-avantjs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Yeoman generator for AvantJS project",
   "homepage": "https://github.com/avant-js",
   "author": {
